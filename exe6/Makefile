@@ -9,4 +9,4 @@ mync:
 clean:
 	rm -f ttt mync
 
-phony: all clean
+.PHONY: all clean

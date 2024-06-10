@@ -500,11 +500,19 @@ int main(int argc, char *argv[]) {
             is_UDP = 0;
         }
     }
+
     if (both_arg) {
         if ((strncmp(both_arg, "UDPS", 4) == 0) || (strncmp(both_arg, "UDSSD", 5) == 0) ) {
             is_UDP = 1;
         } else {
             is_UDP = 0;
+        }
+    }
+
+    if (output_arg) {
+        if ((strncmp(output_arg, "UDPS", 4) == 0) || (strncmp(output_arg, "UDSSD", 5) == 0) )   {
+            printf("UDP server not support -0 flag\n");
+            exit(1);
         }
     }
 
@@ -641,23 +649,23 @@ int main(int argc, char *argv[]) {
  *
  * path = /home/daniel/Desktop/Operating Systems/work2/exe6
  *
- * -i case
+ * -i and -o cases
+ * (tcp case)
+ * first terminal (UDSSS) :  ./mync -e "./ttt 123456789" -i UDSSS/home/daniel/Desktop/Operating Systems/work2/exe6
+ * second terminal: (UDSCS) :  ./mync -e "./ttt 123456789" -i UDSCS/home/daniel/Desktop/Operating Systems/work2/exe6
+ *
+ * (udp case)
+ *  first terminal (UDSSD): ./mync -e "./ttt 123456789" -i UDSSD/home/daniel/Desktop/Operating Systems/work2/exe6
+ *  second terminal(UDSCD) : ./mync -o UDSCD/home/daniel/Desktop/Operating Systems/work2/exe6
+ *
+ *-b case
+ *
+ *           first terminal:  ./mync -e "./ttt 123456789" -b UDSSS/home/daniel/Desktop/Operating Systems/work2/exe6
+ *           second terminal: ./mync -e "./ttt 123456789" -b UDSCS/home/daniel/Desktop/Operating Systems/work2/exe6
  *
  *
  *
  *
- *
- * -o case
- *
- *
- *
- *
- *
- *
- * -b case
- *
- *           first terminal:  ./mync -b UDSSS/home/daniel/Desktop/Operating Systems/work2/exe6
- *           second terminal: ./mync -b UDSCS/home/daniel/Desktop/Operating Systems/work2/exe6
  *
  *
  */
